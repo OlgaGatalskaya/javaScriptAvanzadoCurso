@@ -2,13 +2,12 @@
 
 let caja_edad = document.getElementById('edad');
 let calcEdadBtn = document.getElementById('calcEdad');
-let edad = caja_edad.value;
 let result = document.getElementById('resultado');
 //const LIMITE = 18;
 
 
 calcEdadBtn.addEventListener('click', () => {
-    
+    let edad = caja_edad.value;
     if ( edad >= 18) {
         result.innerHTML = "Tienes mayor de edad";
         console.log('no')
