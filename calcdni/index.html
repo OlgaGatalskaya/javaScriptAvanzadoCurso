@@ -8,12 +8,25 @@
     
     
 </head>
-<body>
+<body id="body">
     <h2>Tu documento</h2>
     <label for="dni">Introduzca tu DNI</label>
     <input name="dni" type="number" id="dni" minlength="9" maxlength="9">
-    <input type="button" value="Calcular" id="calcDni"> 
-    <p id="resultado"></p>
+    <input type="button" value="Calcular" id="calcDni"> <br>
+
+    <input type="radio" id="sin" name="prefijo" value="0" checked="checked">
+    <label for="sin">Sin letra</label><br>
+
+    <input type="radio" id="x" name="prefijo" value="0">
+    <label for="x">X</label><br>
+
+    <input type="radio" id="y" name="prefijo" value="1">
+    <label for="y">Y</label><br>
+
+    <input type="radio" id="z" name="prefijo" value="2">
+    <label for="z">Z</label>
+
+    
     <script src='main.js'></script>
 </body>
 </html>
