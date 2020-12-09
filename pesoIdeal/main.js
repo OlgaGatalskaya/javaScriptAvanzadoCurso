@@ -13,15 +13,15 @@ function calculateImc() {
     
     if (weightValue != "" && heightValue != "") {
         if (tuImc < 16) { 
-            pc.innerHTML= "<h2>Es desnurtido </h2><img src='img/thin.png'>";
+            pc.innerHTML= `<h2>Es desnurtido, su IMC es: ${tuImc} </h2> <img src='img/thin.png'>`;
         } else if (tuImc >= 16 && tuImc < 18) {
-            pc.innerHTML= "<h2> Es delgado </h2><img src='img/thin2.png'>";
+            pc.innerHTML= `<h2> Es delgado, su IMC es: ${tuImc} </h2> <img src='img/thin1.png'>`;
         } else if (tuImc >= 18 && tuImc < 25) {
-            pc.innerHTML= "<h2> Es ideal </h2><img src='img/ideal1.png'>";
+            pc.innerHTML= `<h2> Es ideal,  su IMC es:  ${tuImc} </h2> <img src='img/ideal1.png'>`;
         } else if (tuImc >= 25 && tuImc < 31) {
-            pc.innerHTML= "<h2> Es sobrepeso </h2><img src='img/sobrepeso.png'>";
+            pc.innerHTML= `<h2> Es sobrepeso, su IMC es: ${tuImc} </h2> <img src='img/sobrepeso.png'>`;
         } else {
-            pc.innerHTML= "<h2>Es obeso </h2><img src='img/fat.png'>";
+            pc.innerHTML= `<h2> Es obeso,  su IMC es:  ${tuImc} </h2> <img src='img/fat.png'>`;
         }
     } else {
         alert ("Debes escribir peso y altura")
