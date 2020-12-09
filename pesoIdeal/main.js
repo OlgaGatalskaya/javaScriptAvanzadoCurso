@@ -1,34 +1,33 @@
+
 let weightInput = document.getElementById('weight');
 let heightInput = document.getElementById('height');
 let calculateBtn = document.getElementById('calculate');
 
 
-/*function demostrateResult(tuImc) {
-    let divResult = document.querySelector('div')
-
-    if(!divResult)
-}*/
-
-
 function calculateImc() {
     let weightValue = weightInput.value;
-    let heightValue = heightInput.value;
-    let tuImc = ((weightValue/Math.pow(heightValue, 2))*10000).toFixed();
-    
+    let heightValue = heightInput.value/100;
+    let tuImc = (weightValue/(heightValue*heightValue)).toFixed(2);
     console.log(tuImc);
-
-    if (tuImc < 16) {
-        console.log('es desnutrido')
-    } else if (16 <= tuImc < 18) {
-        console.log('es delgado') 
-    } else if (18 <= tuImc < 25) {
-        console.log('es ideal')
-    } else if (25 <= tuImc < 31) {
-        console.log('es sobrepeso')
+    var pc = document.getElementById("pic_cntr");
+    
+    if (weightValue != "" && heightValue != "") {
+        if (tuImc < 16) { 
+            pc.innerHTML= "<h2>Es desnurtido </h2><img src='img/thin.png'>";
+        } else if (tuImc >= 16 && tuImc < 18) {
+            pc.innerHTML= "<h2> Es delgado </h2><img src='img/thin2.png'>";
+        } else if (tuImc >= 18 && tuImc < 25) {
+            pc.innerHTML= "<h2> Es ideal </h2><img src='img/ideal1.png'>";
+        } else if (tuImc >= 25 && tuImc < 31) {
+            pc.innerHTML= "<h2> Es sobrepeso </h2><img src='img/sobrepeso.png'>";
+        } else {
+            pc.innerHTML= "<h2>Es obeso </h2><img src='img/fat.png'>";
+        }
     } else {
-        console.log('obeso')
+        alert ("Debes escribir peso y altura")
     }
 
+    
 }
 
 calculateBtn.addEventListener('click', calculateImc);
