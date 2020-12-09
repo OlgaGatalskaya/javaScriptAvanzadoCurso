@@ -1,0 +1,49 @@
+#body {
+    display: flex;
+    flex-direction: column;
+    background: #DFF0ED
+   
+}
+#form {
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#form fieldset {
+    border: green solid;
+    background: azure;
+}
+
+#form fieldset legend {
+    font-size: 25px;
+    font-style: italic;
+    color: blue;
+}
+
+.info {
+    color: red;
+    font-size: 18px;
+}
+#height {
+    margin-left: 23px;
+}
+#weight {
+    margin-left: 28px;
+}
+
+#calculate {
+    padding: 5px;
+    margin-left: 400px;
+    border: red solid 2px;
+    color: blue;
+    font-style: italic;
+    font-size: 19px;
+}
+
+#pic_cntr {
+    margin: 0 auto;
+}
+#pic_cntr img {
+    width: 300px;
+}
