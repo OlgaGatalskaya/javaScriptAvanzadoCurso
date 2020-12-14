@@ -2,26 +2,6 @@
 <html>
 
 <head>
-    <!--
-        HACER UNA APP QUE HAGA LO SIGUIENTE:
-
-         LA PÁGINA DEBE PENSAR UN NÚMERO DEL 1 AL 100
-        Y DEBE DARLE 5 OPORTUNADIDES MÁXIMO AL USUARIO
-        PARA ADIVINARLO
-
-        DEBEMOS MOSTRAR UN CONTADOR DE LAS VIDAS QUE LE QUEDAN
-        AL USUARIO EN TODO MOMENTO
-
-        DEBEMOS INFORMARLE CADA VEZ QUE PRUEBA SI 
-        EL NUMERO INTROUCIDO ES MENOR O MAYOR QUE EL BUSCADO
-        A MODO DE PISTA
-
-        SI LO ACIERTA, LE FELICTAMOS CON UN GIF ANIMADO
-        SI FALLA, IGUAL, PERO ADEMAS, LE INDICAMOS EL NÚMERO BUSCADO
-
-
-
-    -->
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
@@ -44,7 +24,7 @@
         }
         )*/
 
-
+        
 
         this.onload = inicio;//SIN PARÉNTESIS
         const NUM_INTENTOS_MAX = 5;
@@ -53,6 +33,8 @@
         let naleatorio;//ámbito global : accesible desde todas las funciones
         let num_intentos;//declaro
         let elemento_imagen_res;
+        let numeros_jugados = [];
+
         function inicio() {
             let container;
             let value;
@@ -61,10 +43,8 @@
                 value = localStorage.getItem('nameUser');
                 container.value=value;
                 container.innerHTML = `Nombre de Jugador: ${value}`;
-                //TODO CUANDO ACABE EL JUEGO, 
-                //DEBE APARECER LA OPCIÓN DE CAMBIAR DE JUGADOR
-                //SUPÓN QUE NO EXISTE EL PARA ATRÁS
             }
+            
             //CALCULAR EL NUMERO ALEATORIO
             naleatorio = Math.floor(Math.random() * 100) + 1;
             console.log ("Num secreto "+ naleatorio);
@@ -73,43 +53,28 @@
             elemento_imagen_res = document.querySelector("img");
             document.querySelector("a").style.visibility = "hidden";
         }
-        function comprobarIntento() {
 
-            //1 obtener el número intro por el usuario
+
+        function comprobarIntento() {
             let nuser = document.getElementById("num_usuario").value;
             console.log("numero usr = " + nuser);
-            //2 compararlo con el que hay que adivinar
-            //si IGUAL
-            //MOSTRAR EL GIF INFO EXITO
+            numeros_jugados.push(nuser);
+            document.getElementById('numeros_jugados').innerHTML=numeros_jugados
             if (nuser == naleatorio) {
-                console.log("ACIERTO!");
                 document.getElementById("info").innerHTML="HAS ACERTADO";
                 elemento_imagen_res.setAttribute ("src", RUTA_FOTO_GANA);
                 document.querySelector("a").style.visibility = "visible";
-            }
-            //si MAYOR
-            //INFORMAR MAYOR
-            //restar intentos disponibles
-            else {
+            } else {
                 console.log("Ha fallado");
                 num_intentos++;
-                //actualizo intentos
                 document.getElementById("vidas").innerHTML = NUM_INTENTOS_MAX - num_intentos;
-                //QUEDAN VIDAS?
                 if (nuser > naleatorio) {
-                    console.log("el buscado es menor");
                     document.getElementById("info").innerHTML="el buscado es menor";
-                }
-                //si MENOR
-                //INFORMAR MENOR
-                //restar intentos disponibles 
-                else {
-                    console.log("el buscado es mayor");
+                } else {
                     document.getElementById("info").innerHTML="el buscado es mayor";
                 }
 
                 if (num_intentos == NUM_INTENTOS_MAX) {
-                    console.log("SE ACABÓ");
                     document.getElementById("info").innerHTML="Perdiste. Buscábamos el " + naleatorio;
                     elemento_imagen_res.setAttribute ("src", RUTA_FOTO_PIERDE);
                     document.querySelector("a").style.visibility = "visible";
@@ -119,8 +84,7 @@
 
 
         }
-        function reiniciar()
-        {
+        function reiniciar() {
             console.log("toco reiniciar");
             //location.href = "juego.html";
             location.reload();
@@ -131,6 +95,12 @@
             inicio();*/
         }
 
+        function changePlayer () {
+            let changeBtn = document.getElementById('btn').value;
+            location.href='pagina1.html'
+        }
+        
+    
 
     </script>
 </head>
@@ -143,9 +113,12 @@
     <input type="button" value="PROBAR" onclick="comprobarIntento()">
     <div id="vidas"></div>
     <div id="intetos">VIDAS</div>
+    <div id="numeros_jugados"></div>
     <div id="info"></div>
     <img id="imgres">
     <div id="suName"></div>
+    <input type="button" id="btn" value="Cambiar jugador" onclick="changePlayer()">
+    
 </body>
 
 </html>

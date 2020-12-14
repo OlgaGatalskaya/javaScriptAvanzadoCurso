@@ -10,9 +10,24 @@
         
         function sendName() {
             let name = document.getElementById('name').value;
-            localStorage.setItem('nameUser', name);
-            location.href='pagina2.html';
+            if (name != '') {
+                localStorage.setItem('nameUser', name);
+                location.href='pagina2.html';
+            } else {
+                alert('Introduzca su Nombre')
+            }
+            
         }
+
+
+        
+
+        
+
+
+
+
+        
         
     </script>
 </head>
