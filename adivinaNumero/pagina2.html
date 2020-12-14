@@ -44,7 +44,7 @@
                 container.value=value;
                 container.innerHTML = `Nombre de Jugador: ${value}`;
             }
-            
+
             //CALCULAR EL NUMERO ALEATORIO
             naleatorio = Math.floor(Math.random() * 100) + 1;
             console.log ("Num secreto "+ naleatorio);
@@ -59,6 +59,7 @@
             let nuser = document.getElementById("num_usuario").value;
             console.log("numero usr = " + nuser);
             numeros_jugados.push(nuser);
+            numeros_jugados.sort((a, b) => a - b );
             document.getElementById('numeros_jugados').innerHTML=numeros_jugados
             if (nuser == naleatorio) {
                 document.getElementById("info").innerHTML="HAS ACERTADO";
