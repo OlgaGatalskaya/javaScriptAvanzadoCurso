@@ -66,6 +66,20 @@
                 console.log("intentos= " + this.intentos);
             }
 
+            guardarTodaPartida() {
+                if (localStorage.getItem('partida')){
+                    let arrayContenido = JSON.parse(localStorage.getItem('partida'));
+                    arrayContenido.push(this);
+                    localStorage.setItem('partida', JSON.stringify(arrayContenido));
+                    console.log(arrayContenido);
+                } else {
+                    let arrayContenido = [];
+                    arrayContenido.push(this);
+                    localStorage.setItem('partida', JSON.stringify(arrayContenido));
+                    console.log('no')
+                    console.log(arrayContenido);
+                }
+            }
         }
 
 
@@ -79,6 +93,7 @@
                 document.getElementById("info").innerHTML="HAS ACERTADO";
                 elemento_imagen_res.setAttribute ("src", RUTA_FOTO_GANA);
                 document.querySelector("a").style.visibility = "visible";
+                num_intentos++
                 informarPartido()
             } else {
                 console.log("Ha fallado");
@@ -104,8 +119,13 @@
             function informarPartido () {
                 let nombre_jugador = localStorage.getItem ('nameUser');
                 
+                //let intent = localStorage.getItem('intentos');
+                
                 let partida = new Partida(nombre_jugador, num_intentos);
+                
+                
                 partida.mostrarPartida();
+                partida.guardarTodaPartida();
             }
 
 
