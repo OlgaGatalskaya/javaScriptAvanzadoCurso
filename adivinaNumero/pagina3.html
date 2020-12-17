@@ -6,38 +6,19 @@
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!--<link rel='stylesheet' type='text/css' media='screen' href='main.css'>-->
-    <script>
-        let cuerpoTabla = document.getElementById('tabla');
-        console.log(cuerpoTabla)
-        let parti = JSON.parse(localStorage.getItem ('partida'));
-        console.log(parti)
-        parti.forEach((parti) => {
-            let tr = document.createElement('tr');
-            let tdNombre = document.createElement('td');
-            tdNombre.innerHTML = parti.nombre;
-            tr.appendChild(tdNombre);
-            let tdIntentos = document.createElement('td');
-            tdIntentos.innerHTML = parti.intentos;
-            tr.appendChild(tdIntentos)
-            cuerpoTabla.appendChild(tr);
-            
-            
-        });
-    </script>
 </head>
 <body>
     <h1>Resultados</h1>
-    <table border="solid 1px">
+    <table border="solid 1px" id="tablaGeneral">
         <thead>
             <tr>
-                <th>Nombre de jugador</th>
-                <th>Numero de intentos</th>
+                <th >Nombre de jugador <input id="nJugador" type="button" value="Ordenar" onclick="ordenar()"></th>
+                <th id="nIntentos">Numero de intentos</th>
 
             </tr>
         </thead>
-        <tbody id="tabla">
-
-        </tbody>
+        <tbody id="tabla"></tbody>
     </table>
+    <script src="pagina3.js"></script>
 </body>
 </html>
